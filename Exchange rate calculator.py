@@ -7,10 +7,10 @@ class ExchangeRates:
             csv_reader = csv.DictReader(csv_file)
             for line in csv_reader:
                 rate = float(line["FXAUSDCAD"])
-        self.__Exchange_rate = rate
+        self.__exchange_rate = rate
         self.__file_name = file_name
 
-    def convert(self, amount=0, from_currency="USD", to_currency="CAD"):
+    def convert(self, amount, from_currency, to_currency):
         if from_currency == "USD" and to_currency == "CAD":
             conversion = amount * self.__Exchange_rate
             print("$" + str(amount) + " US dollars is equal to " +
@@ -33,5 +33,8 @@ class ExchangeRates:
         return conversion
 
 
-Exchange = ExchangeRates(file_name='BankOfCanadaExchangeRate.2026.csv')
-Exchange.convert(amount=94, from_currency="USD", to_currency="USD")
+exchanging_currency = ExchangeRates(file_name='BankOfCanadaExchangeRate.2026.csv')
+amount = float(input("How much would you like to convert? ")) 
+from_currency = input("What currency are you starting with(pick between USD or CAD? ")
+to_currency = input("What currency do you require(pick between USD or CAD? ")
+exchanging_currency.convert(amount=amount, from_currency=from_currency, to_currency=to_currency)
