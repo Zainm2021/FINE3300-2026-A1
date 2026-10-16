@@ -1,11 +1,11 @@
 # FINE3300 Assignment 1 Part 1: Exchange Rate Calculator
 
 ## Overview
-This repository contains my FINE3300 Assignment 1. The assignment includes a Python CAD to USD (or USD to CAD) exchange rate calculator. By using a class called Exchange rate I was able to create the calculator. 
+This repository contains my FINE3300 Assignment 1. The assignment includes a Python CAD to USD (or USD to CAD) exchange rate calculator. By using a class called ExchangeRates I was able to create the calculator. 
 
 ## Files
 1. Exchange rate calculator.py : Part 1 code
-2. ExchangeRateAI : Part 2 code 
+2. ExchangeRatesAI.py : Part 2 code 
 3. BankOfCanadaExchangeRate.2026.csv : Bank of Canada annual exchange rates
 
 ## How It Works
@@ -37,7 +37,7 @@ $100,000.00 Canadian dollars is equal to $71,540.99 US dollars
 
 # FINE3300 Assignment 1 Part 2: AI Exchange Rate Calculator
 ## The model I used 
-For part 2 of the assignment I used the AI model Opus 5.5 from Claude. 
+For part 2 of the assignment I used the AI model Claude Opus 5.5 (Anthropic).
 ## The prompt I used
 After uploading the assignment description and CSV file I used the following prompt:
     Using all of this information from my assignment please create an exchange rate calculator that specifically only exchanges amounts from CAD to USD or vice versa. Following the instructions from my professor please make sure you incorporate a user interactivity component so that the amount and currencies used for the conversion come from the users responses. Make sure that all of the amounts are rounded to 2 decimal places and that the program references the CSV file I have uploaded. If you require further context or explanation let me know.
@@ -62,4 +62,4 @@ Exchange rate used (2025-01-01): 1 USD = 1.3978 CAD
 $100,000.00 USD = $139,780.00 CAD
 ```
 # FINE3300 Assignment 1 Part 1&2 Comparison
-When comparing my code to the code the AI created, both programs share the same core structure. They both include a class named ExchangeRates that reads the Bank of Canada file using csv.DictReader, they both use the rate from the FXAUSDCAD column, they both multiply for USD to CAD and divide for CAD to USD, and they both produce the same results. The main differences between the two are in the design and style of the code. In my class I stored the exchange rate as a private member, while the AI used public attributes and moved the file reading into a separate helper method. To find the most recent rate, my code uses a for loop that goes through every row and keeps the last value, while the AI reads all of the rows into a list and takes the last one directly using rows[-1]. The AI also opens the file with a specific encoding to handle a hidden character at the start of the CSV file, which my code did not need since I never used the Date column. The AI’s convert method also uses fewer if statements because it checks whether the two currencies are the same in one condition, and it only returns the rounded result. The printing and the input prompts are then handled in a separate function called main(). In my code, the convert method both calculates and prints the result, and it includes a branch for invalid currencies. For formatting, the AI used an f-string while I used the format() function, but both outputs show dollar signs, commas and two decimal places. The AI’s version also prints the exchange rate and date used, removes extra characters like dollar signs and spaces from the input, and uses an if __name__ == "__main__": safeguard so the program only runs when the file is executed directly. Overall, the AI’s code is more modular, while my code keeps the logic in fewer places and follows the class structure we covered in lectures.
+When comparing my code to the code the AI created, both programs share the same core structure. They both include a class named ExchangeRates that reads the Bank of Canada file using csv.DictReader, they both use the rate from the FXAUSDCAD column, they both multiply for USD to CAD and divide for CAD to USD, and they both produce the same results. The main differences between the two are in the design and style of the code. In my class I stored the exchange rate as a private member, while the AI used public attributes and moved the file reading into a separate helper method. To find the most recent rate, my code uses a for loop that goes through every row and keeps the last value, while the AI reads all of the rows into a list and takes the last one directly using rows[-1]. The AI also opens the file with a specific encoding to handle a hidden character at the start of the CSV file, which my code did not need since I never used the Date column. The AI’s convert method also uses fewer if statements because it checks whether the two currencies are the same in one condition, and it only returns the rounded result. The printing and the input prompts are then handled in a separate function called main(). In my code, the convert method both calculates and prints the result, and it includes a branch for invalid currencies. For formatting, the AI used an f-string while I used the format() function, but both outputs show dollar signs, commas and two decimal places. The AI’s version also prints the exchange rate and date used, removes extra characters like dollar signs and spaces from the input, and uses an `if __name__ == "__main__":` safeguard so the program only runs when the file is executed directly. Overall, the AI’s code is more modular, while my code keeps the logic in fewer places and follows the class structure we covered in lectures.
