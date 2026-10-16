@@ -1,4 +1,4 @@
-# FINE3300 Assignment 1: Exchange Rate Calculator
+# FINE3300 Assignment 1 Part 1: Exchange Rate Calculator
 
 ## Overview
 This repository contains my FINE3300 Assignment 1. The assignment includes a Python CAD to USD (or USD to CAD) exchange rate calculator. By using a class called Exchange rate I was able to create the calculator. 
@@ -21,3 +21,10 @@ I then instantiated the object to begin exchanging currency, and selected the Ba
 2. Open the folder in Visual Studio Code
 3. Run `Exchange rate calculator.py`
 4. Enter the amount, then USD or CAD for each currency when prompted
+
+# FINE3300 Assignment 1 Part 2: Exchange Rate Calculator
+## The model I used 
+For part 2 of the assignment I used the AI model Opus 5.5 from Claude. 
+## The prompt I used
+After uploading the assignment description and CSV file I used the following prompt:
+    Using all of this information from my assignment please create an exchange rate calculator that specifically only exchanges amounts from CAD to USD or vice versa. Following the instructions from my professor please make sure you incorporate a user interactivity component so that the amount and currencies used for the conversion come from the users responses. Make sure that all of the amounts are rounded to 2 decimal places and that the program references the CSV file I have uploaded. If you require further context or explanation let me know.
