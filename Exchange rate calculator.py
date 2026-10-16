@@ -6,6 +6,7 @@ Below is my exchange rate calculator that converts between CAD and USD or vice v
 # Imports the CSV module so we can read the exchange rate CSV file
 import csv
 
+
 class ExchangeRates:
     # Reads the exchange rate file and stores the latest USD/CAD Exchange rate
     def __init__(self, file_name):
@@ -14,7 +15,7 @@ class ExchangeRates:
             # DictReader lets us look up each row's values using column name as a key
             csv_reader = csv.DictReader(csv_file)
 
-            # this loop goes through each item under the FXAUSDCAD column in the CSV file, and sets the 'rate' variable = to the rate in the file
+            # This loop goes through each item under the FXAUSDCAD column in the CSV file, and sets the 'rate' variable = to the rate in the file
             # Each row overwrites 'rate', so after the loop it holds the last row's value, which is the most recent exchange rate
             for line in csv_reader:
                 rate = float(line["FXAUSDCAD"])
@@ -25,33 +26,34 @@ class ExchangeRates:
 
     # Converts an amount between USD and CAD and prints the formatted result.
     # The rate is CAD per 1 USD, so we multiply for USD -> CAD
-    # and divide for CAD -> USD.    
+    # and divide for CAD -> USD.
     def convert(self, amount, from_currency, to_currency):
         # Converts USD to CAD
         if from_currency == "USD" and to_currency == "CAD":
             conversion = amount * self.__exchange_rate
             print("$" + format(amount, ",.2f") + " US dollars is equal to " +
                   "$" + format(conversion, ",.2f") + " Canadian dollars")
-        
+
         # Converts CAD to USD
         elif from_currency == "CAD" and to_currency == "USD":
             conversion = amount / self.__exchange_rate
             print("$" + format(amount, ",.2f") + " Canadian dollars is equal to " +
                   "$" + format(conversion, ",.2f") + " US dollars")
-        
+
         # Converts CAD to CAD, no conversion needed
         elif from_currency == "CAD" and to_currency == "CAD":
             conversion = amount
             print("The currency has not been exchanged, it equals " +
                   "$" + format(amount, ",.2f") + " Canadian dollars")
-        
+
         # Converts USD to USD, no conversion needed
         elif from_currency == "USD" and to_currency == "USD":
             conversion = amount
             print("The currency has not been exchanged, it equals " +
                   "$" + format(amount, ",.2f") + " US dollars")
-        
-        # Any other currency is not supported
+
+        # Acts as a safety net ensuring 'conversion' always has a value before returning,
+        # even though the assignment assumes only USD or CAD will be entered
         else:
             print("The currency is not valid")
             conversion = 0
@@ -59,13 +61,17 @@ class ExchangeRates:
 
 
 # This part of the program instantiates an ExchangeRates object and tells it to reference the bank of canada exchange rate file
-exchanging_currency = ExchangeRates(file_name='BankOfCanadaExchangeRate.2026.csv')
+exchanging_currency = ExchangeRates(
+    file_name='BankOfCanadaExchangeRate.2026.csv')
 
 # Prompts the user to share the amount of currency they would like to convert and which currency they’re converting from and to, it then stores these values in the variables amount, from_currency and to_currency.
-# The upper method allows the user to type CAD/USD in upper or lower case. 
-amount = float(input("How much would you like to convert? ").replace(",", "")) 
-from_currency = input("What currency are you starting with (pick between USD or CAD)? ").upper()
-to_currency = input("What currency do you require (pick between USD or CAD)? ").upper()
+# The upper method allows the user to type CAD/USD in upper or lower case.
+amount = float(input("How much would you like to convert? ").replace(",", ""))
+from_currency = input(
+    "What currency are you starting with (pick between USD or CAD)? ").upper()
+to_currency = input(
+    "What currency do you require (pick between USD or CAD)? ").upper()
 
 # Pass the user's inputs into convert to calculate and print the result
-exchanging_currency.convert(amount=amount, from_currency=from_currency, to_currency=to_currency)
+exchanging_currency.convert(
+    amount=amount, from_currency=from_currency, to_currency=to_currency)
