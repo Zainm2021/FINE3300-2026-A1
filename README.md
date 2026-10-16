@@ -40,10 +40,12 @@ $100,000.00 Canadian dollars is equal to $71,540.99 US dollars
 For part 2 of the assignment I used the AI model Claude Opus 5.5 (Anthropic).
 ## The prompt I used
 After uploading the assignment description and CSV file I used the following prompt:
-    Using all of this information from my assignment please create an exchange rate calculator that specifically only exchanges amounts from CAD to USD or vice versa. Following the instructions from my professor please make sure you incorporate a user interactivity component so that the amount and currencies used for the conversion come from the users responses. Make sure that all of the amounts are rounded to 2 decimal places and that the program references the CSV file I have uploaded. If you require further context or explanation let me know.
+
+> Using all of this information from my assignment please create an exchange rate calculator that specifically only exchanges amounts from CAD to USD or vice versa. Following the instructions from my professor please make sure you incorporate a user interactivity component so that the amount and currencies used for the conversion come from the users responses. Make sure that all of the amounts are rounded to 2 decimal places and that the program references the CSV file I have uploaded. If you require further context or explanation let me know.
 
 The code it provided me from the first prompt was not bad however if I attempted to input the amount with a comma the code would break so I asked it to fix that using this prompt:
-    The code you have provided me is good, however it does not let me input commas places for the amount, can you change that?
+
+> The code you have provided me is good, however it does not let me input commas places for the amount, can you change that?
 
 ## Output for part 2:
 ```
