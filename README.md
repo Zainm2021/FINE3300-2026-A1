@@ -23,7 +23,7 @@ I then instantiated the object to begin exchanging currency, and selected the Ba
 4. Enter the amount, then USD or CAD for each currency when prompted
 
 ## Output for part 1:
-'''
+```
 How much would you like to convert? 100,000
 What currency are you starting with (pick between USD or CAD)? usd
 What currency do you require (pick between USD or CAD)? cad
@@ -33,7 +33,7 @@ How much would you like to convert? 100,000
 What currency are you starting with (pick between USD or CAD)? cad
 What currency do you require (pick between USD or CAD)? usd
 $100,000.00 Canadian dollars is equal to $71,540.99 US dollars
-'''
+```
 
 # FINE3300 Assignment 1 Part 2: AI Exchange Rate Calculator
 ## The model I used 
@@ -46,7 +46,7 @@ The code it provided me from the first prompt was not bad however if I attempted
     The code you have provided me is good, however it does not let me input commas places for the amount, can you change that?
 
 ## Output for part 2:
-'''
+```
 Enter the amount to convert (e.g. 1234.56): 100,000
 Convert from (USD or CAD): CAD
 Convert to (USD or CAD): USD 
@@ -60,6 +60,6 @@ Convert to (USD or CAD): CAD
 
 Exchange rate used (2025-01-01): 1 USD = 1.3978 CAD
 $100,000.00 USD = $139,780.00 CAD
-'''
+```
 # FINE3300 Assignment 1 Part 1&2 Comparison
 When comparing my code to the code the AI created, both programs share the same core structure. They both include a class named ExchangeRates that reads the Bank of Canada file using csv.DictReader, they both use the rate from the FXAUSDCAD column, they both multiply for USD to CAD and divide for CAD to USD, and they both produce the same results. The main differences between the two are in the design and style of the code. In my class I stored the exchange rate as a private member, while the AI used public attributes and moved the file reading into a separate helper method. To find the most recent rate, my code uses a for loop that goes through every row and keeps the last value, while the AI reads all of the rows into a list and takes the last one directly using rows[-1]. The AI also opens the file with a specific encoding to handle a hidden character at the start of the CSV file, which my code did not need since I never used the Date column. The AI’s convert method also uses fewer if statements because it checks whether the two currencies are the same in one condition, and it only returns the rounded result. The printing and the input prompts are then handled in a separate function called main(). In my code, the convert method both calculates and prints the result, and it includes a branch for invalid currencies. For formatting, the AI used an f-string while I used the format() function, but both outputs show dollar signs, commas and two decimal places. The AI’s version also prints the exchange rate and date used, removes extra characters like dollar signs and spaces from the input, and uses an if __name__ == "__main__": safeguard so the program only runs when the file is executed directly. Overall, the AI’s code is more modular, while my code keeps the logic in fewer places and follows the class structure we covered in lectures.
