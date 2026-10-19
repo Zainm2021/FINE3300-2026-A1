@@ -4,7 +4,7 @@
 This repository contains my FINE3300 Assignment 1. The assignment includes a Python CAD to USD (or USD to CAD) exchange rate calculator. By using a class called ExchangeRates I was able to create the calculator. 
 
 ## Files
-1. Exchange rate calculator.py : Part 1 code
+1. ExchangeRatesCalculator.py : Part 1 code
 2. ExchangeRatesAI.py : Part 2 code 
 3. BankOfCanadaExchangeRate.2026.csv : Bank of Canada annual exchange rates
 
@@ -19,7 +19,7 @@ I then instantiated the object to begin exchanging currency, and selected the Ba
 ## How to run
 1. Clone this repository
 2. Open the folder in Visual Studio Code
-3. Run `Exchange rate calculator.py`
+3. Run `ExchangeRatesCalculator.py`
 4. Enter the amount, then USD or CAD for each currency when prompted
 
 ## Output for part 1:
