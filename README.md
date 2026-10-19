@@ -1,7 +1,7 @@
 # FINE3300 Assignment 1 Part 1: Exchange Rate Calculator
 
 ## Overview
-This repository contains my FINE3300 Assignment 1. The assignment includes a Python CAD to USD (or USD to CAD) exchange rate calculator. By using a class called ExchangeRates I was able to create the calculator. 
+This repository contains my FINE3300 Assignment 1. The assignment includes a Python CAD to USD (or USD to CAD) exchange rate calculator. By using a class called "ExchangeRates" I was able to create the calculator. 
 
 ## Files
 1. ExchangeRatesCalculator.py : Part 1 code
@@ -10,11 +10,11 @@ This repository contains my FINE3300 Assignment 1. The assignment includes a Pyt
 
 ## How It Works
 ### The ExchangeRates Class
-I created a class named ExchangeRates which defines the object ExchangeRates allowing users to select a specific file they would like to use to determine the exchange rate. The class then uses a for loop to go through each row in the file and look for the most recent USD to CAD exchange rate and uses this rate.
+I created a class named ExchangeRates which defines the object ExchangeRates allowing users to select a specific file they would like to use to determine the exchange rate. The class then uses a for loop to go through each row in the file and store the most recent USD to CAD exchange rate and uses this rate.
 ### The convert method
-Within the class I also created the method convert which based off of the 3 parameters of amount, from_currency and to_currency applies a conversion to the amount using the exchange rate from the CSV file. This method accounts for the 2 ways an exchange can occur, from USD to CAD or vice versa. It also formats the output of the currency exchanged to two decimal places.
+Within the class, I also created the method convert which based off of the 3 parameters of amount, from_currency and to_currency applies a conversion to the amount using the exchange rate from the CSV file. This method accounts for the two ways an exchange can occur, from USD to CAD or vice versa. It also formats the output of the currency exchanged to two decimal places.
 ### User Input
-I then instantiated the object to begin exchanging currency, and selected the BankOfCanadaExchangeRate file to pull data from. Using the input function I then prompt the user to select the amount they would like to convert, the currency they are beginning with and the currency they want. The code is then finalized by taking the inputs from the user and placing them into the convert method on the object I created.
+I then instantiated the object to begin exchanging currency and selected the BankOfCanadaExchangeRate file to pull data from. Using the input function I then prompt the user to enter the amount they would like to convert, the currency they are beginning with and the currency they want. The code is then finalized by taking the inputs from the user and placing them into the convert method on the object I created.
 
 ## How to run
 1. Clone this repository
@@ -63,5 +63,5 @@ Convert to (USD or CAD): CAD
 Exchange rate used (2025-01-01): 1 USD = 1.3978 CAD
 $100,000.00 USD = $139,780.00 CAD
 ```
-# FINE3300 Assignment 1 Part 1&2 Comparison
+# FINE3300 Assignment 1 Part 1 & 2 Comparison
 When comparing my code to the code the AI created, both programs share the same core structure. They both include a class named ExchangeRates that reads the Bank of Canada file using csv.DictReader, they both use the rate from the FXAUSDCAD column, they both multiply for USD to CAD and divide for CAD to USD, and they both produce the same results. The main differences between the two are in the design and style of the code. In my class I stored the exchange rate as a private member, while the AI used public attributes and moved the file reading into a separate helper method. To find the most recent rate, my code uses a for loop that goes through every row and keeps the last value, while the AI reads all of the rows into a list and takes the last one directly using rows[-1]. The AI also opens the file with a specific encoding to handle a hidden character at the start of the CSV file, which my code did not need since I never used the Date column. The AI’s convert method also uses fewer if statements because it checks whether the two currencies are the same in one condition, and it only returns the rounded result. The printing and the input prompts are then handled in a separate function called main(). In my code, the convert method both calculates and prints the result, and it includes a branch for invalid currencies. For formatting, the AI used an f-string while I used the format() function, but both outputs show dollar signs, commas and two decimal places. The AI’s version also prints the exchange rate and date used, removes extra characters like dollar signs and spaces from the input, and uses an `if __name__ == "__main__":` safeguard so the program only runs when the file is executed directly. Overall, the AI’s code is more modular, while my code keeps the logic in fewer places and follows the class structure we covered in lectures.
